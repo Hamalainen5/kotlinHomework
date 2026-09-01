@@ -59,6 +59,7 @@ class CurrentConditionsDisplay : Observer {
 
 class StatisticsDisplay : Observer {
     private val temperatures = mutableListOf<Float>()
+    var average: Float = 0.0f
 
     override fun update(data: WeatherData) {
         temperatures.add(data.temperature)
@@ -67,7 +68,7 @@ class StatisticsDisplay : Observer {
 // This method calculates and displays the average temperature.
     fun display() {
         if (temperatures.isNotEmpty()) {
-            val average = temperatures.sum() / temperatures.size
+            average = temperatures.sum() / temperatures.size
             println("StatisticsDisplay: Avg temperature: ${average}C")
         }
     }
